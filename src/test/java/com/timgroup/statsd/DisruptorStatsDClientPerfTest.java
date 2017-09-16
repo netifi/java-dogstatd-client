@@ -3,6 +3,7 @@ package com.timgroup.statsd;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.net.SocketException;
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
+@Ignore
 public final class DisruptorStatsDClientPerfTest {
 
 
