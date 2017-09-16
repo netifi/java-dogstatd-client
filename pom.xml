@@ -2,11 +2,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.datadoghq</groupId>
+    <groupId>io.netifi</groupId>
     <artifactId>java-dogstatsd-client</artifactId>
     <packaging>jar</packaging>
     <name>java-dogstatsd-client</name>
-    <version>2.3</version>
+    <version>2.4</version>
     <description>A tiny library allowing Java applications to communicate with DataDog statsd instances easily.
     </description>
     <url>https://github.com/DataDog/java-dogstatsd-client</url>
@@ -32,6 +32,11 @@
     </scm>
 
     <developers>
+        <developer> <!-- Added Disruptor Client -->
+            <id>netifi</id>
+            <name>Netifi</name>
+            <email>robert@datadoghq.com</email>
+        </developer>
         <developer> <!-- Additions for new Datadog features -->
             <id>datadog</id>
             <name>Datadog developers</name>
@@ -77,12 +82,12 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>netifi</id>
+            <url>http://artifactory.netifiinc.com:8081/artifactory/netifi-repo-snapshot/</url>
         </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>netifi</id>
+            <url>http://artifactory.netifiinc.com:8081/artifactory/netifi-repo-local/</url>
         </repository>
     </distributionManagement>
 
@@ -136,17 +141,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.8</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
             </plugin>
         </plugins>
     </build>

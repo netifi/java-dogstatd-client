@@ -913,7 +913,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
     
         public void onEvent(StatsEvent event, long sequence, boolean endOfBatch) {
             try {
-                String message = "";
+                String message;
                 
                 switch (event.type) {
                     case count1:
@@ -962,7 +962,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
                         message = event.executionTime2();
                         break;
                     default:
-                        throw new IllegalArgumentException("unknow event type " + event.type);
+                        throw new IllegalArgumentException("unknown event type " + event.type);
                 }
                 
                 final InetSocketAddress address = addressLookup.call();
@@ -986,7 +986,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         private void blockingSend(final InetSocketAddress address) throws IOException {
             final int sizeOfBuffer = sendBuffer.position();
             sendBuffer.flip();
-        
+            
             final int sentBytes = clientChannel.send(sendBuffer, address);
             sendBuffer.limit(sendBuffer.capacity());
             sendBuffer.rewind();
