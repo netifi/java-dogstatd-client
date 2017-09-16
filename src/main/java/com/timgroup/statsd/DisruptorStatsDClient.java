@@ -906,7 +906,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
     }
 
     private boolean isInvalidSample(double sampleRate) {
-    	return sampleRate != 1 && Math.random() > sampleRate;
+    	return sampleRate != 1 && ThreadLocalRandom.current().nextDouble() > sampleRate;
     }
 
     public static final Charset MESSAGE_CHARSET = Charset.forName("UTF-8");
