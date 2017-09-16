@@ -9,14 +9,19 @@ node {
             string(credentialsId: 'artifactory-user', variable: 'secret'),
             string(credentialsId: 'packer-user', variable: 'CLIENT_SECRET')
         ]) {
+
             stage('Checkout') {
                 checkout scm
             }
             stage('Build') {
-               sh 'mvn clean compile test'
+                withMaven(jdk: 'Default', maven: 'Default') {
+                    sh 'mvn clean compile test'
+                }
             }
             stage('Publish') {
-               sh 'mvn deploy'
+                withMaven(jdk: 'Default', maven: 'Default') {
+                    sh 'mvn deploy'
+                }
             }
         }
     }
