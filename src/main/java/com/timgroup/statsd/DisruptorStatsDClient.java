@@ -616,6 +616,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent event = ringBuffer.get(sequence);
+            event.reset();
             event.type = StatsEvent.Type.executionTime1;
             event.aspect = aspect;
             event.timeInMs = timeInMs;
@@ -637,6 +638,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent event = ringBuffer.get(sequence);
+            event.reset();
             event.type = StatsEvent.Type.executionTime2;
             event.aspect = aspect;
             event.timeInMs = timeInMs;
@@ -683,6 +685,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent event = ringBuffer.get(sequence);
+            event.reset();
             event.type = StatsEvent.Type.histogram1;
             event.aspect = aspect;
             event.value = value;
@@ -704,6 +707,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent event = ringBuffer.get(sequence);
+            event.reset();
             event.type = StatsEvent.Type.histogram2;
             event.aspect = aspect;
             event.value = value;
@@ -748,6 +752,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent event = ringBuffer.get(sequence);
+            event.reset();
             event.type = StatsEvent.Type.histogram3;
             event.aspect = aspect;
             event.longValue = value;
@@ -770,6 +775,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent event = ringBuffer.get(sequence);
+            event.reset();
             event.type = StatsEvent.Type.histogram4;
             event.aspect = aspect;
             event.longValue = value;
@@ -816,6 +822,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent statsEvent = ringBuffer.get(sequence);
+            statsEvent.reset();
             statsEvent.type = StatsEvent.Type.event1;
             statsEvent.event = event;
             statsEvent.tags = tags;
@@ -841,6 +848,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent statsEvent = ringBuffer.get(sequence);
+            statsEvent.reset();
             statsEvent.type = StatsEvent.Type.serviceCheck;
             statsEvent.serviceCheck = sc;
         }
@@ -886,6 +894,7 @@ public final class DisruptorStatsDClient implements StatsDClient {
         long sequence = ringBuffer.next();
         try {
             StatsEvent event = ringBuffer.get(sequence);
+            event.reset();
             event.type = StatsEvent.Type.setValue;
             event.aspect = aspect;
             event.stringValue = value;
